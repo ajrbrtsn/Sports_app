@@ -5,6 +5,9 @@ from models.match import Match
 from repositories import teams_repository
 from repositories import matches_repository
 
+teams_repository.delete_all()
+matches_repository.delete_all()
+
 team_1 = Team("Scotland", "Hampden")
 teams_repository.save(team_1)
 

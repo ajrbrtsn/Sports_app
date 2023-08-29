@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Teams</h1>
+
+<table>
+    {% for team in teams %}
+    <tr>
+        <td><a href="/teams/{{ team.id }}"> {{team.name}} </a></td>
+        <td>Stadium: {{team.stadium}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

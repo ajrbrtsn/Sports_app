@@ -30,12 +30,24 @@ def new_team():
 def create_team():
     name = request.form['name']
     stadium = request.form['stadium']
-    id = request.form['id']
-    teams = teams_repository.select(teams.id)
-    match = matches_repository.select(match.id)
-    team = Team(name, stadium, id)
+    team = Team(name, stadium)
     teams_repository.save(team)
     return redirect('/teams')
+
+@teams_blueprint.route("/teams/<id>/edit", methods=['GET'])
+def edit_team(id):
+    team = teams_repository.select(id)
+    return render_template("teams/edit.html", team=team)
+
+@teams_blueprint.route("/teams/<id>/update", methods=['POST'])
+def team_update(id):
+    name = request.form['name']
+    stadium = request.form['stadium']
+    team = teams_repository.select(id)
+    team.name = name
+    team.stadium = stadium
+    teams_repository.update(team)
+    return redirect("/teams")
 
 @teams_blueprint.route("/teams/<id>/delete", methods=['POST'])
 def delete_team(id):

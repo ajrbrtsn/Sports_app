@@ -6,12 +6,27 @@
 
     {% for team in teams %}
     <tr>
-        <td>
+        <td class="team-row">
             <a class="atag" href="/teams/{{team.id}}">{{team.name}}</a>
+              <form action="/teams/{{ team.id }}/delete" method="POST">
+                 <input class="btn btn--danger" type="submit" value="Delete" />
+            </form>
+            <a href="/teams/{{ team.id }}/edit">
+                <button>Edit</button>
+            </a>
         </td>
     </tr>
     {% endfor %}
 
 </table>
+
+<h2>Add New Team</h2>
+<form method="POST" action="/teams">
+    <label for="team">New Team:</label>
+    <input type="text" name="name" required>
+    <label for="stadium">New Stadium:</label>
+    <input type="text" name="stadium" required>
+    <button type="submit">Add</button>
+</form>
 
 {% endblock %}

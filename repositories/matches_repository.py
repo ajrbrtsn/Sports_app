@@ -6,7 +6,7 @@ from repositories import matches_repository
 
 def save(match):
     sql = "INSERT INTO matches ( home_team, away_team, home_score, away_score) VALUES ( %s, %s, %s, %s ) RETURNING id"
-    values = [match.home_team.id, match.away_team.id, match.home_score, match.away_score]
+    values = [match.home_team, match.away_team, match.home_score, match.away_score]
     results = run_sql( sql, values )
     match.id = results[0]['id']
     return match
@@ -33,9 +33,6 @@ def select(id):
         result = results[0]
         match = Match(result['home_team'], result['away_team'], result['home_score'], result['away_score'], result['id'])
     return match
-
-
-
 
 def update(match):
     sql = "UPDATE matches SET (home_team, away_team, home_score, away_score) = (%s, %s, %s, %s) WHERE id = %s"

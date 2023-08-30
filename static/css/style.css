@@ -1,13 +1,16 @@
 /* Apply the black background to the entire body */
 body {
   background-color: purple;
+  /* background-image: url('/static/images/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat; */
   color: yellow;
 }
 
 /* Style the header with a yellow background and black text */
 header {
-  background-color: Purple;
-  color: yellow
+  background-color: yellow;
+  color: yellow;
   padding: 10px;
   /* text-align: center; */
 }
@@ -25,8 +28,15 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: yellow;
+  color: purple;
   font-size: larger;
+}
+
+nav ul li a:hover  {
+  text-decoration: none;
+  color: purple;
+  font-size: larger;
+  border-bottom: solid 3px purple;
 }
 
 /* Style sections with a black background and yellow text */
@@ -69,4 +79,10 @@ footer {
   color: yellow;
   font-size: larger;
   border-bottom: solid 3px yellow;
+}
+
+.team-row {
+  display: flex;
+  width: 10em;
+  justify-content: space-between;
 }

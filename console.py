@@ -26,8 +26,11 @@ matches_repository.save(match1)
 match2 = Match(team_3, team_4, 2, 5 )
 matches_repository.save(match2)
 
-match3 = Match(team_1, team_3, 1, 1 )
+match3 = Match(team_1, team_3, 3, 1 )
 matches_repository.save(match3)
+
+match4 = Match(team_2, team_4, 1, 1 )
+matches_repository.save(match4)
 
 results = teams_repository.select_all()
 pdb.set_trace()

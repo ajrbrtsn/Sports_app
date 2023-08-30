@@ -29,12 +29,19 @@ def create_match():
     away_team = request.form['away_team']
     home_score = request.form['home_score']
     away_score = request.form['away_score']
-    id = request.form['id']
-    team = teams_repository.select(team.id)
-    matches = matches_repository.select(match.id)
     match = Match(home_team, away_team, home_score, away_score, id)
     matches_repository.save(match)
     return redirect('/matches')
+
+@matches_blueprint.route("/matches/<id>/update", methods=['POST'])
+def match_update():
+    home_team = request.form['home_team']
+    away_team = request.form['away_team']
+    home_score = request.form['home_score']
+    away_score = request.form['away_score']
+    team = teams_repository.save(team.id)
+    match = Match(home_team, away_team, home_score, away_score, id)
+    return redirect("/matches")
 
 @matches_blueprint.route("/matches/<id>/delete", methods=['POST'])
 def delete_match(id):

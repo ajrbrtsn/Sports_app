@@ -12,19 +12,19 @@ def teams():
     teams = teams_repository.select_all()
     matches = matches_repository.select_all()
     print(matches)
-    return render_template("teams/index.html", teams = teams, matches=matches)
+    return render_template("teams/index.html", teams=teams, matches=matches)
 
 @teams_blueprint.route("/teams/<id>")
 def show(id):
     team = teams_repository.select(id)
-    matches = matches_repository.select_all()(team)
+    matches = matches_repository.matchbyteam(team)
     return render_template("teams/show.html", team=team, matches=matches)
 
 @teams_blueprint.route("/teams/new", methods=['GET'])
 def new_team():
     teams = teams_repository.select_all()
     matches = matches_repository.select_all()
-    return render_template("teams/show.html", teams = teams, matches = matches)
+    return render_template("teams/show.html", teams=teams, matches=matches)
 
 @teams_blueprint.route("/teams",  methods=['POST'])
 def create_team():
@@ -40,4 +40,4 @@ def create_team():
 @teams_blueprint.route("/teams/<id>/delete", methods=['POST'])
 def delete_team(id):
     teams_repository.delete(id)
-    return redirect('/team')
+    return redirect('/teams')

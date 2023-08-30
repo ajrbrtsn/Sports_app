@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Sports App powered by CodeClan</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <header>
@@ -9,15 +10,13 @@
       <ul class="menu">
         <li><a href="/">Home</a></li>
         <li><a href="/teams">Teams</a></li>
-        <!-- <li><a href="/teams/new">New Teams</a></li> -->
-        <li><a href="/matches">Matches</li>
-        <!-- <li><a href="/matches/new">New Matches</a></li>  -->
+        <li><a href="/matches">Matches</a></li>
       </ul>
     </nav>
   </header>
-  <div class="container">
-    {% block content %}
-    {% endblock %}
-  </div>
+
+{% block content %}
+{% endblock %}
+ 
 </body>
-</html> -->
+</html> 

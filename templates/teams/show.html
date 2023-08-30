@@ -9,7 +9,9 @@
 
 <ul>
     {% for match in matches %}
-    <li>{{team.name}}</li>
+    <li>
+        <p>{{match.home_team.name}} {{match.home_score}} : {{match.away_score}} {{match.away_team.name}}</p>
+    </li>
     {% endfor %}
 </ul>
 

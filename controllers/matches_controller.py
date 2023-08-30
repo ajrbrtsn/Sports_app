@@ -8,8 +8,8 @@ matches_blueprint = Blueprint("matches", __name__)
 
 @matches_blueprint.route("/matches")
 def matches():
-    match = matches_repository.select_all()
-    return render_template("matches/index.html", match = match)
+    matches = matches_repository.select_all()
+    return render_template("matches/index.html", matches = matches)
 
 @matches_blueprint.route("/matches/<id>")
 def show(id):

@@ -1,0 +1,72 @@
+/* Apply the black background to the entire body */
+body {
+  background-color: purple;
+  color: yellow;
+}
+
+/* Style the header with a yellow background and black text */
+header {
+  background-color: Purple;
+  color: yellow
+  padding: 10px;
+  /* text-align: center; */
+}
+
+/* Style navigation links */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: yellow;
+  font-size: larger;
+}
+
+/* Style sections with a black background and yellow text */
+section {
+  background-color: purple;
+  color: yellow;
+  padding: 20px;
+  margin: 20px;
+}
+
+/* Style table headers */
+table th {
+  background-color: yellow;
+  color: purple;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Style table rows */
+table td {
+  padding: 8px;
+}
+
+/* Style the footer with a yellow background and black text */
+footer {
+  background-color: yellow;
+  color: purple;
+  text-align: center;
+  padding: 10px;
+}
+
+.atag {
+  text-decoration: none;
+  color: yellow;
+  font-size: larger;
+}
+
+.atag:hover  {
+  text-decoration: none;
+  color: yellow;
+  font-size: larger;
+  border-bottom: solid 3px yellow;
+}

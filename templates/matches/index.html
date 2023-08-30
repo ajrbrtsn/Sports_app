@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h1>Matches</h1>
+<h1>Results</h1>
 
-<table>
-    {% for match in matches %}
-      if match.home_team == home_team OR match.away_team == away_team
-    </tr>
-    {% endfor %}
 
-</table>
+
+        <ul>
+          {% for match in matches %}
+          <li>
+              <p>{{match.home_team.name}} {{match.home_score}} : {{match.away_score}} {{match.away_team.name}}</p>
+          </li>
+          {% endfor %}
+      </ul>
+ 
 
 {% endblock %}

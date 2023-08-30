@@ -21,11 +21,14 @@ def select_all():
     return teams
 
 def select(id):
-    user = None
+    team = None
     sql = "SELECT * FROM teams WHERE id = %s"
     values = [id]
     results = run_sql(sql, values)
-
+    if results:
+        result = results[0]
+        team = Team(result['name'], result['stadium'], result['id'])
+    return team
 
 def update(team):
     sql = "UPDATE teams SET (name, stadium) = (%s, %s) WHERE id = %s"

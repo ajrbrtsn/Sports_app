@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.team import Team
-# from models.match import Match
 from repositories import teams_repository
 from repositories import matches_repository
 

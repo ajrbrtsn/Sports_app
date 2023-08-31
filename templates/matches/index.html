@@ -2,31 +2,40 @@
 {% block content %}
 <h1>Results</h1>
 
-        <ul>
-          {% for match in matches %}
-          <li>
-              <p>{{match.home_team.name}} {{match.home_score}} : {{match.away_score}} {{match.away_team.name}}</p>
-                <form action="/matches/{{ match.id }}/delete" method="POST">
-                    <input class="btn btn--danger" type="submit" value="Delete" />
-                </form>
-                <form action="/matches/{{ match.id }}/update" method="POST">
-                    <input class="btn btn--danger" type="submit" value="Edit" />
-                </form>
-          </li>
-          {% endfor %}
-      </ul>
- 
-      <h2>Add Match</h2>
-      <form method="POST" action="/matches">
-          <label for="match">Home Team:</label>
-          <input type="text" name="home_team" required>
-          <label for="match">Away Team:</label>
-          <input type="text" name="away_team" required>
-          <label for="match">Home Team Score:</label>
-          <input type="text" name="home_score" required>
-          <label for="match">Away Team Score:</label>
-          <input type="text" name="away_score" required>
-          <button type="submit">Add</button>
-      </form>
+<ul>
+    {% for match in matches %}
+    <li>
+        <p>{{match.home_team.name}} {{match.home_score}} : {{match.away_score}} {{match.away_team.name}}</p>
+        <form action="/matches/{{ match.id }}/delete" method="POST">
+            <input class="btn btn--danger" type="submit" value="Delete" />
+        </form>
+        <a class="atag" href="/matches/{{ match.id }}/edit">
+        <input class="btn btn--danger" type="submit" value="Edit" /></a>
+    </li>
+    {% endfor %}
+</ul>
+
+<h2>Add Match</h2>
+<form action="/matches"  method="POST">
+    <label for="match">Home Team:</label>
+    <select name="home_team" id="">
+        {% for team in teams %}
+        <option value="{{team.id}}">{{team.name}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="match">Away Team:</label>
+    <select name="away_team" id="">
+        {% for team in teams %}
+        <option value="{{team.id}}">{{team.name}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="match">Home Team Score:</label>
+    <input type="text" name="home_score" required>
+    <label for="match">Away Team Score:</label>
+    <input type="text" name="away_score" required>
+    <button type="submit">Add</button>
+</form>
 
 {% endblock %}

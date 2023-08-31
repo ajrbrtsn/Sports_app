@@ -9,7 +9,8 @@ matches_blueprint = Blueprint("matches", __name__)
 @matches_blueprint.route("/matches")
 def matches():
     matches = matches_repository.select_all()
-    return render_template("matches/index.html", matches = matches)
+    teams = teams_repository.select_all()
+    return render_template("matches/index.html", matches = matches, teams=teams)
 
 @matches_blueprint.route("/matches/<id>")
 def show(id):
@@ -29,18 +30,35 @@ def create_match():
     away_team = request.form['away_team']
     home_score = request.form['home_score']
     away_score = request.form['away_score']
-    match = Match(home_team, away_team, home_score, away_score, id)
+    home_team_object = teams_repository.select(home_team)
+    away_team_object = teams_repository.select(away_team)
+    match = Match(home_team_object, away_team_object, home_score, away_score)
     matches_repository.save(match)
     return redirect('/matches')
 
+@matches_blueprint.route("/matches/<id>/edit")
+def edit_match(id):
+    match = matches_repository.select(id)
+    teams = teams_repository.select_all()
+    return render_template("matches/edit.html", teams = teams, match = match)
+
+
 @matches_blueprint.route("/matches/<id>/update", methods=['POST'])
-def match_update():
+def match_update(id):
+    match = matches_repository.select(id)
+
     home_team = request.form['home_team']
     away_team = request.form['away_team']
     home_score = request.form['home_score']
     away_score = request.form['away_score']
+    home_team_object = teams_repository.select(home_team)
+    away_team_object = teams_repository.select(away_team)
     team = teams_repository.save(team.id)
-    match = Match(home_team, away_team, home_score, away_score, id)
+    match.home_team = home_team_object
+    match.away_team = away_team_object
+    match.home_score= home_score
+    match.away_score = away_score
+    teams_repository.update(team)
     return redirect("/matches")
 
 @matches_blueprint.route("/matches/<id>/delete", methods=['POST'])

@@ -9,7 +9,7 @@ CREATE TABLE teams (
 
 CREATE TABLE matches (
     id SERIAL PRIMARY KEY,
-    home_team INT REFERENCES teams(id) ON DELETE CASCADE,
+    home_team INT REFERENCES teams(id) ON DELETE CASCADE, 
     away_team INT REFERENCES teams(id) ON DELETE CASCADE,
     home_score INT,
     away_score INT

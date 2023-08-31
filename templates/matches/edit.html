@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Edit Match</h1>
+<form action="/matches"  method="POST">
+    <label for="match">Home Team:</label>
+    <select name="home_team" id="">
+        {% for team in teams %}
+        <option value="{{team.id}}">{{team.name}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="match">Away Team:</label>
+    <select name="away_team" id="">
+        {% for team in teams %}
+        <option value="{{team.id}}">{{team.name}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="match">Home Team Score:</label>
+    <input type="text" name="home_score" value={{match.home_score}} required>
+    <label for="match">Away Team Score:</label>
+    <input type="text" name="away_score" value={{match.away_score}} required>
+    <button type="submit">Update</button>
+</form>
+
+{% endblock %}
